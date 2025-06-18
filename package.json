@@ -25,27 +25,59 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/juice-shop/juice-shop.git"
+    "url": "git+https://github.com/juice-shop/juice-shop.git"
   },
   "license": "MIT",
   "author": "Björn Kimminich <bjoern.kimminich@owasp.org> (https://kimminich.de)",
   "contributors": [
-    "Björn Kimminich",
-    "Jannik Hollenbach",
-    "Aashish683",
-    "greenkeeper[bot]",
-    "MarcRler",
-    "agrawalarpit14",
-    "Scar26",
-    "ShubhamPalriwala",
-    "CaptainFreak",
-    "JuiceShopBot",
-    "Supratik Das",
-    "the-pro",
-    "Ziyang Li",
-    "Timo Pagel",
-    "aaryan10",
-    "..."
+    {
+      "name": "Björn Kimminich"
+    },
+    {
+      "name": "Jannik Hollenbach"
+    },
+    {
+      "name": "Aashish683"
+    },
+    {
+      "name": "greenkeeper[bot]"
+    },
+    {
+      "name": "MarcRler"
+    },
+    {
+      "name": "agrawalarpit14"
+    },
+    {
+      "name": "Scar26"
+    },
+    {
+      "name": "ShubhamPalriwala"
+    },
+    {
+      "name": "CaptainFreak"
+    },
+    {
+      "name": "JuiceShopBot"
+    },
+    {
+      "name": "Supratik Das"
+    },
+    {
+      "name": "the-pro"
+    },
+    {
+      "name": "Ziyang Li"
+    },
+    {
+      "name": "Timo Pagel"
+    },
+    {
+      "name": "aaryan10"
+    },
+    {
+      "name": "..."
+    }
   ],
   "scripts": {
     "build:frontend": "cd frontend && npm run build",
@@ -117,6 +149,7 @@
     ]
   },
   "dependencies": {
+    "base64url": "^3.0.0",
     "body-parser": "^1.20.2",
     "check-dependencies": "^1.1.1",
     "check-internet-connected": "^2.0.6",
@@ -132,7 +165,7 @@
     "ethers": "^6.13.2",
     "express": "^4.21.0",
     "express-ipfilter": "^1.3.2",
-    "express-jwt": "0.1.3",
+    "express-jwt": "^7.7.5",
     "express-rate-limit": "^7.5.0",
     "express-robots-txt": "^0.4.1",
     "express-security.txt": "^2.0.0",
@@ -154,7 +187,7 @@
     "html-entities": "^1.4.0",
     "i18n": "^0.11.1",
     "js-yaml": "^3.14.0",
-    "jsonwebtoken": "0.4.0",
+    "jsonwebtoken": "^9.0.0",
     "jssha": "^3.3.1",
     "juicy-chat-bot": "^0.8.0",
     "libxmljs": "^1.0.11",
@@ -189,6 +222,7 @@
   },
   "devDependencies": {
     "@cyclonedx/cyclonedx-npm": "^2.0.0||^3.0.0",
+    "@eslint/js": "^9.29.0",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/chai": "^4.3.20",
     "@types/clarinet": "^0.12.3",
@@ -246,8 +280,10 @@
     "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-react": "^7.37.5",
     "exif": "^0.6.0",
     "frisby": "github:bkimminich/frisby",
+    "globals": "^16.2.0",
     "grunt-cli": "^1.5.0",
     "http-server": "^0.12.3",
     "jasmine": "^3.99.0",
@@ -287,5 +323,10 @@
       "angular",
       "inject"
     ]
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }

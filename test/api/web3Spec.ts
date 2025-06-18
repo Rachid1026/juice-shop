@@ -2,6 +2,7 @@
  * Copyright (c) 2014-2025 Bjoern Kimminich & the OWASP Juice Shop contributors.
  * SPDX-License-Identifier: MIT
  */
+require('dotenv').config();
 
 import * as frisby from 'frisby'
 import { Joi } from 'frisby'
@@ -33,7 +34,8 @@ describe('/submitKey', () => {
 
   it('POST public wallet key in request body gets rejected as such', () => {
     return frisby.post(REST_URL + '/submitKey', {
-      privateKey: '0x02c7a2a93289c9fbda5990bac6596993e9bb0a8d3f178175a80b7cfd983983f506'
+      // Replaced hardcoded private key with environment variable for security
+      privateKey: process.env.WEB3_PRIVATE_KEY
     })
       .expect('status', 401)
       .expect('header', 'content-type', /application\/json/)
