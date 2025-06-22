@@ -20,7 +20,8 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      run: npm ci
+      run: npm install
+
 
     - name: Run Bandit (static code analysis for Python - optional if applicable)
       run: echo "Skipping Bandit (not a Python project)"
