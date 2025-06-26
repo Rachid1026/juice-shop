@@ -13,16 +13,21 @@ import { UserModel } from '../models/user'
 import * as models from '../models/index'
 import { type User } from '../data/types'
 import * as utils from '../lib/utils'
+import logger from '../lib/security-logger'
+
 
 // vuln-code-snippet start loginAdminChallenge loginBenderChallenge loginJimChallenge
 export function login () {
-  function afterLogin (user: { data: User, bid: number }, res: Response, next: NextFunction) {
+  function afterLogin (user: { data: User, bid: number }, req: Request, res: Response, next: NextFunction)
+
     verifyPostLoginChallenges(user) // vuln-code-snippet hide-line
     BasketModel.findOrCreate({ where: { UserId: user.data.id } })
       .then(([basket]: [BasketModel, boolean]) => {
         const token = security.authorize(user)
         user.bid = basket.id // keep track of original basket
         security.authenticatedUsers.put(token, user)
+        
+
         res.json({ authentication: { token, bid: basket.id, umail: user.data.email } })
       }).catch((error: Error) => {
         next(error)
@@ -46,8 +51,10 @@ export function login () {
           })
         } else if (user.data?.id) {
           // @ts-expect-error FIXME some properties missing in user - vuln-code-snippet hide-line
-          afterLogin(user, res, next)
+          afterLogin(user, req, res, next)
+
         } else {
+          logger.warn(`Failed login attempt for email: ${req.body.email} from IP: ${req.ip}`)
           res.status(401).send(res.__('Invalid email or password.'))
         }
       }).catch((error: Error) => {
